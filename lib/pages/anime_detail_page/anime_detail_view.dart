@@ -1,3 +1,4 @@
+import 'package:anime_list/common/loading_shimmer.dart';
 import 'package:anime_list/core/extensions/context_extension.dart';
 import 'package:anime_list/pages/anime_detail_page/anime_detail_bloc.dart';
 import 'package:anime_list/pages/anime_detail_page/widgets/character_card.dart';
@@ -19,7 +20,7 @@ class AnimeDetailView extends StatelessWidget {
         child: BlocBuilder<AnimeDetailBloc, AnimeDetailState>(
           builder: (BuildContext context, AnimeDetailState state) {
             if (state is AnimeDetailLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: KrakenLoadingShimmer(title: "Loading"));
             } else if (state is AnimeDetailLoaded) {
               final animeDetail = state.animeDetail;
               return SingleChildScrollView(
