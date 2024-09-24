@@ -20,13 +20,19 @@ class AnimeDetailView extends StatelessWidget {
         child: BlocBuilder<AnimeDetailBloc, AnimeDetailState>(
           builder: (BuildContext context, AnimeDetailState state) {
             if (state is AnimeDetailLoading) {
-              return const Center(child: KrakenLoadingShimmer(title: "Loading"));
+              return const Center(
+                  child: KrakenLoadingShimmer(title: "Loading"));
             } else if (state is AnimeDetailLoaded) {
               final animeDetail = state.animeDetail;
               return SingleChildScrollView(
                 child: Column(
                   children: [
-                    Image.network(animeDetail.imageUrl!),
+                    Image.network(
+                      animeDetail.imageUrl!,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset('assets/placeholder.png');
+                      },
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(

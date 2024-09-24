@@ -30,7 +30,6 @@ class AnimeListDataBody extends StatelessWidget {
     });
 
     if (state is AnimeListLoading) {
-
       return const KrakenLoadingShimmer(title: "Loading");
     } else if (state is AnimeListLoaded) {
       final animeList = (state as AnimeListLoaded).animeList;
@@ -53,11 +52,16 @@ class AnimeListDataBody extends StatelessWidget {
             },
             child: NeumorphicContainer(
               child: Row(
+                mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.network(animeList[index].imageUrl!,
-                      width: 150, height: 200, fit: BoxFit.cover),
+                  animeList[index].imageUrl == null
+                      ? Image.asset('assets/placeholder.png')
+                      : Image.network(animeList[index].imageUrl!,
+                          errorBuilder: (context, error, stackTrace) {
+                          return Image.asset('assets/placeholder.png');
+                        }, width: 150, height: 200, fit: BoxFit.cover),
                   context.mediumWidthSizedBox,
                   Expanded(
                     child: Column(
@@ -89,8 +93,7 @@ class AnimeListDataBody extends StatelessWidget {
           );
         },
       );
-    }
-    else {
+    } else {
       return const Center(child: Text("Error Occurred"));
     }
   }

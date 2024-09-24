@@ -18,6 +18,9 @@ class CharacterCard extends StatelessWidget {
               width: 80,
               height: 80,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset('assets/placeholder.png');
+              },
             ),
           ),
           const SizedBox(height: 4),

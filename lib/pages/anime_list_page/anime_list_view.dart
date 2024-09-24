@@ -1,7 +1,7 @@
 import 'package:anime_list/core/extensions/context_extension.dart';
 import 'package:anime_list/pages/anime_list_page/anime_list_bloc.dart';
 import 'package:anime_list/pages/anime_list_page/anime_list_enums.dart';
-import 'package:anime_list/pages/anime_list_page/widgets/anime_listview.dart';
+import 'package:anime_list/pages/anime_list_page/widgets/anime_list_databody.dart';
 import 'package:anime_list/pages/anime_list_page/widgets/anime_type_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -3,7 +3,7 @@ import 'package:anime_list/pages/anime_list_page/models/anime_list_model.dart';
 import '../../core/constants/app_const.dart';
 
 class AnimeController {
-  static Future<List<AnimeListModel>> getAnimeList(int pageNumber,
+   Future<List<AnimeListModel>> getAnimeList(int pageNumber,
       {String? type, String? filter}) async {
     try {
       final response =

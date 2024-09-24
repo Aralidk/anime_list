@@ -62,7 +62,8 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
     }
     try {
       bool isUpcoming = (event.filter == "Upcoming");
-      List<AnimeListModel> newAnimeList = await AnimeController.getAnimeList(
+      AnimeController controller = AnimeController();
+      List<AnimeListModel> newAnimeList = await controller.getAnimeList(
         event.pageNumber,
         type: event.type ?? currentType,
         filter: isUpcoming ? "Upcoming" : null,
