@@ -13,15 +13,22 @@ class CharacterCard extends StatelessWidget {
       child: Column(
         children: [
           ClipOval(
-            child: Image.network(
-              character.images!,
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Image.asset('assets/placeholder.png');
-              },
-            ),
+            child: character.images != null
+                ? Image.network(
+                    character.images!,
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset('assets/placeholder.png');
+                    },
+                  )
+                : Image.asset(
+                    'assets/placeholder.png',
+                    height: 80,
+                    width: 80,
+                    fit: BoxFit.cover,
+                  ),
           ),
           const SizedBox(height: 4),
           SizedBox(

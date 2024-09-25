@@ -1,9 +1,10 @@
 import 'package:anime_list/core/network/network_manager.dart';
 import 'package:anime_list/pages/anime_list_page/models/anime_list_model.dart';
+import 'package:flutter/foundation.dart';
 import '../../core/constants/app_const.dart';
 
 class AnimeController {
-   Future<List<AnimeListModel>> getAnimeList(int pageNumber,
+  Future<List<AnimeListModel>> getAnimeList(int pageNumber,
       {String? type, String? filter}) async {
     try {
       final response =
@@ -21,10 +22,14 @@ class AnimeController {
         }
         return resData;
       } else {
-        print("Error: ${response.statusCode}");
+        if (kDebugMode) {
+          print(response.message);
+        }
       }
     } catch (e) {
-      print("Exception: $e");
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return [];
   }

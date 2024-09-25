@@ -1,36 +1,10 @@
 import 'package:anime_list/pages/anime_detail_page/models/character_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'anime_detail_controller.dart';
-import 'models/anime_detail_model.dart';
+import '../anime_detail_controller.dart';
+import 'detail_events.dart';
+import 'detail_states.dart';
+import '../models/anime_detail_model.dart';
 
-// Events
-abstract class AnimeDetailEvent {}
-
-class FetchAnimeDetail extends AnimeDetailEvent {
-  final int animeId;
-  FetchAnimeDetail(this.animeId);
-}
-
-// States
-abstract class AnimeDetailState {}
-
-class AnimeDetailInitial extends AnimeDetailState {}
-
-class AnimeDetailLoading extends AnimeDetailState {}
-
-class AnimeDetailLoaded extends AnimeDetailState {
-  final AnimeDetailModel animeDetail;
-  final List<CharacterModel> characters;
-
-  AnimeDetailLoaded(this.animeDetail, this.characters);
-}
-
-class AnimeDetailError extends AnimeDetailState {
-  final String message;
-  AnimeDetailError(this.message);
-}
-
-// Bloc
 class AnimeDetailBloc extends Bloc<AnimeDetailEvent, AnimeDetailState> {
   AnimeDetailBloc() : super(AnimeDetailInitial()) {
     on<FetchAnimeDetail>(_mapFetchAnimeDetailToState);
@@ -40,10 +14,11 @@ class AnimeDetailBloc extends Bloc<AnimeDetailEvent, AnimeDetailState> {
       FetchAnimeDetail event, Emitter<AnimeDetailState> emit) async {
     emit(AnimeDetailLoading());
     try {
+      AnimeDetailController detailController = AnimeDetailController();
       AnimeDetailModel? detailResponse =
-          await AnimeDetailController.getAnimeDetail(event.animeId);
+          await detailController.getAnimeDetail(event.animeId);
       final charactersResponse =
-          await AnimeDetailController.getAnimeCharacters(event.animeId);
+          await detailController.getAnimeCharacters(event.animeId);
 
       if (detailResponse != null && charactersResponse != null) {
         AnimeDetailModel animeDetail = detailResponse;

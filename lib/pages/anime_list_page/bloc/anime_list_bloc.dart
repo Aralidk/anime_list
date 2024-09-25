@@ -1,43 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'anime_list_controller.dart';
-import 'models/anime_list_model.dart';
-
-abstract class AnimeListEvent {}
-
-class FetchAnimeList extends AnimeListEvent {
-  final int pageNumber;
-  final String? type;
-  final String? filter;
-
-  FetchAnimeList(this.pageNumber, {this.type, this.filter});
-}
-
-abstract class AnimeListState {}
-
-class AnimeListReachedBottom extends AnimeListEvent {}
-
-class AnimeListInitial extends AnimeListState {}
-
-class AnimeListLoading extends AnimeListState {}
-
-class AnimeListLoaded extends AnimeListState {
-  final List<AnimeListModel> animeList;
-  final bool? selectedFilter;
-  final String? type;
-
-  AnimeListLoaded(this.animeList, this.selectedFilter, this.type);
-}
-
-class AnimeListError extends AnimeListState {
-  final String message;
-  AnimeListError(this.message);
-}
-
-class ChangeAnimeFilter extends AnimeListEvent {
-  final bool? upcoming;
-  final String? type;
-  ChangeAnimeFilter({this.upcoming, this.type});
-}
+import '../anime_list_controller.dart';
+import 'list_events.dart';
+import 'list_states.dart';
+import '../models/anime_list_model.dart';
 
 class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
   bool isUpcomingFilter = false;
@@ -57,7 +22,7 @@ class AnimeListBloc extends Bloc<AnimeListEvent, AnimeListState> {
       FetchAnimeList event, Emitter<AnimeListState> emit) async {
     if (isLastPage || isFetching) return;
     isFetching = true;
-    if(allAnimeList.isEmpty){
+    if (allAnimeList.isEmpty) {
       emit(AnimeListLoading());
     }
     try {

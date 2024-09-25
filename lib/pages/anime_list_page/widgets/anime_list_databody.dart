@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../common/loading_shimmer.dart';
 import '../../../common/neumorphic_container.dart';
 import '../../anime_detail_page/anime_detail_view.dart';
-import '../anime_list_bloc.dart';
+import '../bloc/anime_list_bloc.dart';
+import '../bloc/list_events.dart';
+import '../bloc/list_states.dart';
 
 class AnimeListDataBody extends StatelessWidget {
   const AnimeListDataBody({super.key, required this.state});

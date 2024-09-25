@@ -1,8 +1,9 @@
 import 'package:anime_list/common/loading_shimmer.dart';
-import 'package:anime_list/pages/anime_list_page/anime_list_bloc.dart';
+import 'package:anime_list/pages/anime_list_page/bloc/anime_list_bloc.dart';
 import 'package:anime_list/pages/anime_list_page/anime_list_controller.dart';
 import 'package:anime_list/pages/anime_list_page/anime_list_enums.dart';
 import 'package:anime_list/pages/anime_list_page/anime_list_view.dart';
+import 'package:anime_list/pages/anime_list_page/bloc/list_states.dart';
 import 'package:anime_list/pages/anime_list_page/models/anime_list_model.dart';
 import 'package:anime_list/pages/anime_list_page/widgets/anime_list_databody.dart';
 import 'package:flutter/material.dart';

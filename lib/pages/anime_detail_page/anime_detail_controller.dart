@@ -4,7 +4,7 @@ import '../../core/network/network_manager.dart';
 import 'models/anime_detail_model.dart';
 
 class AnimeDetailController {
-  static Future<AnimeDetailModel?> getAnimeDetail(int animeId) async {
+   Future<AnimeDetailModel?> getAnimeDetail(int animeId) async {
     var response = await NetworkManager().get("$baseUrl/anime/$animeId");
     if (response.statusCode == 200) {
       return AnimeDetailModel.fromJson(response.data);
@@ -12,7 +12,7 @@ class AnimeDetailController {
     return null;
   }
 
-  static Future<List<CharacterModel>?> getAnimeCharacters(int animeId) async {
+   Future<List<CharacterModel>?> getAnimeCharacters(int animeId) async {
     var response =
         await NetworkManager().get("$baseUrl/anime/$animeId/characters");
 

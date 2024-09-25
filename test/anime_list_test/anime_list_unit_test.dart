@@ -1,5 +1,7 @@
+import 'package:anime_list/pages/anime_list_page/bloc/list_events.dart';
+import 'package:anime_list/pages/anime_list_page/bloc/list_states.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anime_list/pages/anime_list_page/anime_list_bloc.dart';
+import 'package:anime_list/pages/anime_list_page/bloc/anime_list_bloc.dart';
 import 'package:anime_list/pages/anime_list_page/models/anime_list_model.dart';
 import 'package:anime_list/pages/anime_list_page/anime_list_controller.dart';
 import 'package:mocktail/mocktail.dart';

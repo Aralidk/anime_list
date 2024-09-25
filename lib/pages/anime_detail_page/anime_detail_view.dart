@@ -1,9 +1,11 @@
 import 'package:anime_list/common/loading_shimmer.dart';
 import 'package:anime_list/core/extensions/context_extension.dart';
-import 'package:anime_list/pages/anime_detail_page/anime_detail_bloc.dart';
+import 'package:anime_list/pages/anime_detail_page/bloc/anime_detail_bloc.dart';
 import 'package:anime_list/pages/anime_detail_page/widgets/character_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/detail_events.dart';
+import 'bloc/detail_states.dart';
 
 class AnimeDetailView extends StatelessWidget {
   const AnimeDetailView(

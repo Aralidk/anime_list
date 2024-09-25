@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'anime_list_bloc.dart';
+import 'bloc/anime_list_bloc.dart';
+import 'bloc/list_events.dart';
 
 class NativeMethodChannel {
   static const _channel = MethodChannel('com.example/anime');
@@ -7,7 +9,9 @@ class NativeMethodChannel {
     try {
       await _channel.invokeMethod('fetchAnimeList');
     } on PlatformException catch (e) {
-      print("Failed to invoke method: '${e.message}'.");
+      if(kDebugMode){
+        print("Failed to invoke method: '${e.message}'.");
+      }
     }
   }
 
